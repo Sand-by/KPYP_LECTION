@@ -15,6 +15,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        
         <materialDesign:Card Padding="32" Margin="16">
             <StackPanel>
                 <TextBlock Text="Работа с файлами" FontSize="30" FontWeight="Bold" Margin="0 0 0 20"/>
