@@ -9,7 +9,7 @@ public class vscode
     public int add(int a, int b)
     {
         return a + b;
-        s
+        
     }
 
     public int sub(int a, int b)
