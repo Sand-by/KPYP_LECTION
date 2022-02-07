@@ -114,6 +114,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.user_listbox);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(570, 400);
             this.MinimumSize = new System.Drawing.Size(570, 400);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
