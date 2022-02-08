@@ -45,6 +45,7 @@
             this.user_listbox.Name = "user_listbox";
             this.user_listbox.Size = new System.Drawing.Size(300, 244);
             this.user_listbox.TabIndex = 0;
+            this.user_listbox.SelectedIndexChanged += new System.EventHandler(this.user_listbox_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -87,7 +88,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(192, 51);
             this.button2.TabIndex = 5;
-            this.button2.Text = "Удалить последнюю запись";
+            this.button2.Text = "Удалить выделенное";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

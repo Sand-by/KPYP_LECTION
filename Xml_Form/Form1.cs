@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -11,6 +13,7 @@ namespace Xml_Form
         XmlDocument xDoc;
 
 #nullable enable
+#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         public Form1()
         {
             InitializeComponent();
@@ -26,7 +29,6 @@ namespace Xml_Form
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
             XmlElement? xRoot = xDoc.DocumentElement;
             if (xRoot != null)
             {
@@ -47,10 +49,28 @@ namespace Xml_Form
                     }
                     users.Add(user);
                 }
+
                 foreach (User u in users)
                 {
-                    user_listbox.Items.Add($"{u.Name} ({u.Company}) - {u.Age}");
+
+                    //user_listbox.Items.Add($"{u.Name} ({u.Company}) - {u.Age}");
                 }
+                user_listbox.DrawMode = DrawMode.Normal;
+                List<KeyValuePair<string, string>> KeyValueList = new List<KeyValuePair<string, string>>();
+                foreach (User Curritem in users)
+                {
+                    KeyValueList.Add(
+                        new KeyValuePair<string, string>(Curritem.Name + "(" + Curritem.Company + ")",
+                                        Curritem.Age.ToString()));
+                }
+                user_listbox.DisplayMember = "Key";
+                user_listbox.ValueMember = "Value";
+                user_listbox.DataSource = KeyValueList;
+                user_listbox.Refresh();
+
+                /*user_listbox.DisplayMember = "Name";
+                user_listbox.DataSource = users;*/
+
             }
         }
 
@@ -110,16 +130,25 @@ namespace Xml_Form
         {
             XmlElement xRoot = xDoc.DocumentElement;
 
-            XmlNode lastNode = xRoot.LastChild;
-            xRoot.RemoveChild(lastNode);
+            XmlNode xmlNode = xRoot.SelectSingleNode($"//user[@name='{users[user_listbox.SelectedIndex].Name}']");
+            xmlNode.ParentNode.RemoveChild(xmlNode);
             xDoc.Save(@"D:\KPYP_LECTION\xml_class\Workers.xml");
             MessageBox.Show("Успешно удалено!","Состояние",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Application.Restart();
             Environment.Exit(0);
+
+        }
+
+        private void user_listbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //MessageBox.Show(users[user_listbox.SelectedIndex].Company);
         }
     }
 }
+
