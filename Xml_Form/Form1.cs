@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
@@ -9,11 +11,9 @@ namespace Xml_Form
 {
     public partial class Form1 : Form
     {
-        List<User> users;
+        BindingList<User> users;
         XmlDocument xDoc;
 
-#nullable enable
-#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         public Form1()
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace Xml_Form
         }
         public void InitializeVariables()
         {
-            users = new List<User>();
+            users = new();
             xDoc = new XmlDocument();
             xDoc.Load(@"D:\KPYP_LECTION\xml_class\Workers.xml");
 
@@ -50,27 +50,17 @@ namespace Xml_Form
                     users.Add(user);
                 }
 
-                foreach (User u in users)
-                {
-
-                    //user_listbox.Items.Add($"{u.Name} ({u.Company}) - {u.Age}");
-                }
-                user_listbox.DrawMode = DrawMode.Normal;
                 List<KeyValuePair<string, string>> KeyValueList = new List<KeyValuePair<string, string>>();
                 foreach (User Curritem in users)
                 {
                     KeyValueList.Add(
-                        new KeyValuePair<string, string>(Curritem.Name + "(" + Curritem.Company + ")",
+                        new KeyValuePair<string, string>(Curritem.Name + " (" + Curritem.Company + ") "+Curritem.Age,
                                         Curritem.Age.ToString()));
                 }
                 user_listbox.DisplayMember = "Key";
                 user_listbox.ValueMember = "Value";
                 user_listbox.DataSource = KeyValueList;
                 user_listbox.Refresh();
-
-                /*user_listbox.DisplayMember = "Name";
-                user_listbox.DataSource = users;*/
-
             }
         }
 
@@ -113,10 +103,6 @@ namespace Xml_Form
             {
                 MessageBox.Show("Ошибка добавления!", "Состояние", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            //добавляем узлы
-
-
 
         }
 
