@@ -1,7 +1,10 @@
 ﻿
 namespace Xml_Form.Classes
 {
-    internal class Settings
+    public class Settings
     {
+        public string? Theme { get; set; }
+
+        public string? ColorScheme { get; set; }
     }
 }

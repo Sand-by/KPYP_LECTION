@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Xml;
+using Xml_Form.Classes;
 
 namespace Xml_Form
 {
@@ -11,21 +12,43 @@ namespace Xml_Form
     {
         private BindingList<User> users = new();
         private XmlDocument xDoc = new();
+        private XmlDocument settingsDoc = new();
+        MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+        Settings settings = new Settings();
 
         public Form1()
         {
             InitializeComponent();
             InitializeVariables();
             LoadXml();
-            var materialSkinManager = MaterialSkinManager.Instance;
+            LoadSettings();
+
             materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Orange300, Primary.Orange200, Primary.Orange100, Accent.Orange400, TextShade.BLACK);
+            //materialSkinManager.ColorScheme = new ColorScheme(Primary.Orange300, Primary.Orange200, Primary.Orange100, Accent.Orange400, TextShade.BLACK);
         }
         public void InitializeVariables()
         {
             user_listbox1.DisplayMember = "FullInfo";
             user_listbox1.DataSource = users;
+        }
+        private void LoadSettings()
+        {
+            settingsDoc.Load(@"D:\KPYP_LECTION\Xml_Form\XML\XMLFile1.xml");
+            XmlElement? xRoot = settingsDoc.DocumentElement;
+            if (xRoot != null)
+            {
+                foreach (XmlElement xnode in xRoot)
+                {
+                    XmlNode? attr = xnode.Attributes.GetNamedItem("theme");
+                    settings.Theme = attr.Value;
+                }
+            }
+            if(settings.Theme == "DARK")
+            {
+                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+                materialSwitch1.Checked = true;
+            }
+
         }
         private void LoadXml()
         {
@@ -124,25 +147,46 @@ namespace Xml_Form
             if (!materialSwitch1.Checked)
             {
                 Tmanager.Theme = MaterialSkinManager.Themes.LIGHT;
-                materialSwitch1.Text = "Светлая";
+                materialSwitch1.Text = "LIGHT";
             }
             else
             {
                 Tmanager.Theme = MaterialSkinManager.Themes.DARK;
-                materialSwitch1.Text = "Темная";
+                materialSwitch1.Text = "DARK";
             }
         }
 
-        private void user_listbox1_MouseDown(object sender, MouseEventArgs e)
+        private void materialRadioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if(materialRadioButton1.Checked)
+                Tmanager.ColorScheme = new ColorScheme(Primary.Blue100, Primary.Blue200, Primary.Blue300, Accent.Blue400, TextShade.BLACK);
+        }
+
+        private void materialRadioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if(materialRadioButton2.Checked)
+                Tmanager.ColorScheme = new ColorScheme(Primary.Orange300, Primary.Orange200, Primary.Orange100, Accent.Orange400, TextShade.BLACK);
+        }
+
+        private void materialRadioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (materialRadioButton3.Checked)
+                Tmanager.ColorScheme = new ColorScheme(Primary.Green100, Primary.Green200, Primary.Green300, Accent.Green400, TextShade.BLACK);
+        }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+
+            XmlElement? xRoot = settingsDoc.DocumentElement;
+            if (xRoot != null)
             {
-                user_listbox1.SelectedIndex = user_listbox1.IndexFromPoint(e.Location);
-                if (user_listbox1.SelectedIndex != -1)
+                foreach (XmlElement xnode in xRoot)
                 {
-                    contextMenuStrip1.Show(user_listbox1,e.Location);
+                    xnode.Attributes["theme"].Value = materialSwitch1.Text;
                 }
             }
+
+            settingsDoc.Save(@"D:\KPYP_LECTION\Xml_Form\XML\XMLFile1.xml");
         }
     }
 
