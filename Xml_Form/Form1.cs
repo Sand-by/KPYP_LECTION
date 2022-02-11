@@ -1,34 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+using System;
 using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 
 namespace Xml_Form
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MaterialForm
     {
-        BindingList<User> users;
-        XmlDocument xDoc;
+        private BindingList<User> users = new();
+        private XmlDocument xDoc = new();
 
         public Form1()
         {
             InitializeComponent();
             InitializeVariables();
-
+            LoadXml();
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Orange300, Primary.Orange200, Primary.Orange100, Accent.Orange400, TextShade.BLACK);
         }
         public void InitializeVariables()
         {
-            users = new();
-            xDoc = new XmlDocument();
-            xDoc.Load(@"D:\KPYP_LECTION\xml_class\Workers.xml");
-
+            user_listbox1.DisplayMember = "FullInfo";
+            user_listbox1.DataSource = users;
         }
-        private void Form1_Load(object sender, EventArgs e)
+        private void LoadXml()
         {
+            xDoc.Load(@"D:\KPYP_LECTION\Xml_Form\XML\Workers.xml");
             XmlElement? xRoot = xDoc.DocumentElement;
             if (xRoot != null)
             {
@@ -37,7 +38,7 @@ namespace Xml_Form
                     User user = new();
                     XmlNode? attr = xnode.Attributes.GetNamedItem("name");
 
-                    user.Name = attr?.Value;
+                    user.Name = attr.Value;
 
                     foreach (XmlNode childnode in xnode.ChildNodes)
                     {
@@ -49,92 +50,91 @@ namespace Xml_Form
                     }
                     users.Add(user);
                 }
-
-                List<KeyValuePair<string, string>> KeyValueList = new List<KeyValuePair<string, string>>();
-                foreach (User Curritem in users)
-                {
-                    KeyValueList.Add(
-                        new KeyValuePair<string, string>(Curritem.Name + " (" + Curritem.Company + ") "+Curritem.Age,
-                                        Curritem.Age.ToString()));
-                }
-                user_listbox.DisplayMember = "Key";
-                user_listbox.ValueMember = "Value";
-                user_listbox.DataSource = KeyValueList;
-                user_listbox.Refresh();
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void SaveXml(string name, string company, string age)
         {
-            XmlElement xRoot = xDoc.DocumentElement;
-            // создаем новый элемент user
+            XmlElement? xRoot = xDoc.DocumentElement;
+
             XmlElement userElem = xDoc.CreateElement("user");
-            // создаем атрибут name
+
             XmlAttribute nameAttr = xDoc.CreateAttribute("name");
-            // создаем элементы company и age
+
             XmlElement companyElem = xDoc.CreateElement("company");
             XmlElement ageElem = xDoc.CreateElement("age");
-            // создаем текстовые значения для элементов и атрибута
 
-            XmlText nameText;
-            XmlText companyText;
-            XmlText ageText;
+            XmlText nameText = xDoc.CreateTextNode(name);
+            XmlText companyText = xDoc.CreateTextNode(company);
+            XmlText ageText = xDoc.CreateTextNode(age);
+            nameAttr.AppendChild(nameText);
+            companyElem.AppendChild(companyText);
+            ageElem.AppendChild(ageText);
+            userElem.Attributes.Append(nameAttr);
+            userElem.AppendChild(companyElem);
+            userElem.AppendChild(ageElem);
 
-            if (name_field.Text != "" && company_field.Text != "" && age_field.Text != "")
-            {
-                nameText = xDoc.CreateTextNode($"{name_field.Text}");
-                companyText = xDoc.CreateTextNode($"{company_field.Text}");
-                ageText = xDoc.CreateTextNode($"{age_field.Text}");
+            xRoot?.AppendChild(userElem);
+            xDoc.Save(@"D:\KPYP_LECTION\Xml_Form\XML\Workers.xml");
+        }
+        private void Add_button_Click(object sender, EventArgs e)
+        {
 
-                nameAttr.AppendChild(nameText);
-                companyElem.AppendChild(companyText);
-                ageElem.AppendChild(ageText);
-
-                userElem.Attributes.Append(nameAttr);
-                userElem.AppendChild(companyElem);
-                userElem.AppendChild(ageElem);
-
-                xRoot.AppendChild(userElem);
-                xDoc.Save(@"D:\KPYP_LECTION\xml_class\Workers.xml");
-
-                MessageBox.Show("Успешно добавлено!", "Состояние", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
+            if (name_field1.Text == string.Empty || company_field.Text == string.Empty || age_field.Text == string.Empty)
             {
                 MessageBox.Show("Ошибка добавления!", "Состояние", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                SaveXml(name_field1.Text, company_field.Text, age_field.Text);
+                User user = new User(name_field1.Text, Convert.ToInt32(age_field.Text), company_field.Text);
+                users.Add(user);
+
+                MaterialListBoxItem item = new MaterialListBoxItem(user.FullInfo);
+            }
 
         }
-
-        private void age_field_KeyPress(object sender, KeyPressEventArgs e)
+        private void Age_field_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) ) e.Handled = true;
-            
-        }
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) e.Handled = true;
 
-        private void button2_Click(object sender, EventArgs e)
+        }
+        private void Delete_user_Click(object sender, EventArgs e)
         {
-            XmlElement xRoot = xDoc.DocumentElement;
 
-            XmlNode xmlNode = xRoot.SelectSingleNode($"//user[@name='{users[user_listbox.SelectedIndex].Name}']");
-            xmlNode.ParentNode.RemoveChild(xmlNode);
-            xDoc.Save(@"D:\KPYP_LECTION\xml_class\Workers.xml");
-            MessageBox.Show("Успешно удалено!","Состояние",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            
+            XmlElement? xRoot = xDoc.DocumentElement;
+            if (user_listbox1.SelectedIndex >= 0)
+            {
+                XmlNode? xmlNode = xRoot?.SelectSingleNode($"//user[@name='{users[user_listbox1.SelectedIndex].Name}']");
+                xmlNode?.ParentNode?.RemoveChild(xmlNode);
+                xDoc.Save(@"D:\KPYP_LECTION\Xml_Form\XML\Workers.xml");
+                users.RemoveAt(user_listbox1.SelectedIndex);
+            }
+
         }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void Restart_button_Click(object sender, EventArgs e)
         {
             Application.Restart();
             Environment.Exit(0);
-
         }
 
-        private void user_listbox_SelectedIndexChanged(object sender, EventArgs e)
+        MaterialSkinManager m = MaterialSkinManager.Instance;
+        private void materialSwitch1_CheckedChanged(object sender, EventArgs e)
         {
-
-            //MessageBox.Show(users[user_listbox.SelectedIndex].Company);
+            if (!materialSwitch1.Checked)
+            {
+                m.Theme = MaterialSkinManager.Themes.LIGHT;
+                materialSwitch1.Text = "Светлая";
+            }
+            else
+            {
+                m.Theme = MaterialSkinManager.Themes.DARK;
+                materialSwitch1.Text = "Темная";
+            }
         }
+
+
     }
+
+    
 }
 
