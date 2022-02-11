@@ -79,14 +79,14 @@ namespace Xml_Form
         private void Add_button_Click(object sender, EventArgs e)
         {
 
-            if (name_field1.Text == string.Empty || company_field.Text == string.Empty || age_field.Text == string.Empty)
+            if (name_field.Text == string.Empty || company_field.Text == string.Empty || age_field.Text == string.Empty)
             {
                 MessageBox.Show("Ошибка добавления!", "Состояние", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                SaveXml(name_field1.Text, company_field.Text, age_field.Text);
-                User user = new User(name_field1.Text, Convert.ToInt32(age_field.Text), company_field.Text);
+                SaveXml(name_field.Text, company_field.Text, age_field.Text);
+                User user = new User(name_field.Text, Convert.ToInt32(age_field.Text), company_field.Text);
                 users.Add(user);
 
                 MaterialListBoxItem item = new MaterialListBoxItem(user.FullInfo);
@@ -117,22 +117,21 @@ namespace Xml_Form
             Environment.Exit(0);
         }
 
-        MaterialSkinManager m = MaterialSkinManager.Instance;
-        private void materialSwitch1_CheckedChanged(object sender, EventArgs e)
+        MaterialSkinManager Tmanager = MaterialSkinManager.Instance;
+
+        private void materialSwitch1_CheckedChanged_1(object sender, EventArgs e)
         {
             if (!materialSwitch1.Checked)
             {
-                m.Theme = MaterialSkinManager.Themes.LIGHT;
+                Tmanager.Theme = MaterialSkinManager.Themes.LIGHT;
                 materialSwitch1.Text = "Светлая";
             }
             else
             {
-                m.Theme = MaterialSkinManager.Themes.DARK;
+                Tmanager.Theme = MaterialSkinManager.Themes.DARK;
                 materialSwitch1.Text = "Темная";
             }
         }
-
-        
     }
 
     

@@ -1,4 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <users>
-  
+  <user name="Dmitriy Ivanov">
+    <company>Hogvarts</company>
+    <age>11</age>
+  </user>
+  <user name="Dmitriy Ivanov">
+    <company>Hogvarts</company>
+    <age>11</age>
+  </user>
+  <user name="Dmitriy Ivanov">
+    <company>Hogvarts</company>
+    <age>11</age>
+  </user>
 </users>
