@@ -43,14 +43,18 @@
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.materialSwitch1 = new MaterialSkin.Controls.MaterialSwitch();
             this.pic = new System.Windows.Forms.ImageList(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // user_listbox1
@@ -62,6 +66,7 @@
             this.user_listbox1.Name = "user_listbox1";
             this.user_listbox1.Size = new System.Drawing.Size(723, 381);
             this.user_listbox1.TabIndex = 0;
+            this.user_listbox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.user_listbox1_MouseDown);
             // 
             // add_button
             // 
@@ -271,6 +276,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.White;
+            this.tabPage2.Controls.Add(this.materialCard1);
             this.tabPage2.Controls.Add(this.materialSwitch1);
             this.tabPage2.ImageKey = "sety.png";
             this.tabPage2.Location = new System.Drawing.Point(4, 39);
@@ -279,6 +285,20 @@
             this.tabPage2.Size = new System.Drawing.Size(1048, 490);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Настройки";
+            // 
+            // materialCard1
+            // 
+            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.materialCard1.Depth = 0;
+            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard1.Location = new System.Drawing.Point(121, 162);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard1.Name = "materialCard1";
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard1.Size = new System.Drawing.Size(250, 125);
+            this.materialCard1.TabIndex = 12;
             // 
             // materialSwitch1
             // 
@@ -305,6 +325,20 @@
             this.pic.Images.SetKeyName(1, "sety.png");
             this.pic.Images.SetKeyName(2, "sdf.png");
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.удалитьToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 28);
+            // 
+            // удалитьToolStripMenuItem
+            // 
+            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
+            this.удалитьToolStripMenuItem.Text = "Удалить";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -325,6 +359,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -346,5 +381,8 @@
         private MaterialSkin.Controls.MaterialTextBox age_field;
         private MaterialSkin.Controls.MaterialTextBox company_field;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
+        private MaterialSkin.Controls.MaterialCard materialCard1;
     }
 }

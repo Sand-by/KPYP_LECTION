@@ -132,6 +132,18 @@ namespace Xml_Form
                 materialSwitch1.Text = "Темная";
             }
         }
+
+        private void user_listbox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                user_listbox1.SelectedIndex = user_listbox1.IndexFromPoint(e.Location);
+                if (user_listbox1.SelectedIndex != -1)
+                {
+                    contextMenuStrip1.Show(user_listbox1,e.Location);
+                }
+            }
+        }
     }
 
     
