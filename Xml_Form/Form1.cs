@@ -40,13 +40,41 @@ namespace Xml_Form
                 foreach (XmlElement xnode in xRoot)
                 {
                     XmlNode? attr = xnode.Attributes.GetNamedItem("theme");
+
                     settings.Theme = attr.Value;
+
+                    XmlNode? sch = xnode.Attributes.GetNamedItem("colorscheme");
+
+                    settings.ColorScheme = sch.Value;
+
                 }
             }
-            if(settings.Theme == "DARK")
+            if (settings.Theme == "DARK")
             {
                 materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
                 materialSwitch1.Checked = true;
+            }
+
+            switch (settings.ColorScheme)
+            {
+                case "ORANGE":
+                    {
+                        Tmanager.ColorScheme = new ColorScheme(Primary.Orange300, Primary.Orange200, Primary.Orange100, Accent.Orange400, TextShade.BLACK);
+                        materialRadioButton2.Checked = true;
+                    }
+                    break;
+                case "BLUE":
+                    {
+                        Tmanager.ColorScheme = new ColorScheme(Primary.Blue100, Primary.Blue200, Primary.Blue300, Accent.Blue400, TextShade.BLACK);
+                        materialRadioButton1.Checked = true;
+                    }
+                    break;
+                case "GREEN":
+                    {
+                        Tmanager.ColorScheme = new ColorScheme(Primary.Green100, Primary.Green200, Primary.Green300, Accent.Green400, TextShade.BLACK);
+                        materialRadioButton3.Checked = true;
+                    }
+                    break;
             }
 
         }
@@ -158,13 +186,13 @@ namespace Xml_Form
 
         private void materialRadioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            if(materialRadioButton1.Checked)
+            if (materialRadioButton1.Checked)
                 Tmanager.ColorScheme = new ColorScheme(Primary.Blue100, Primary.Blue200, Primary.Blue300, Accent.Blue400, TextShade.BLACK);
         }
 
         private void materialRadioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            if(materialRadioButton2.Checked)
+            if (materialRadioButton2.Checked)
                 Tmanager.ColorScheme = new ColorScheme(Primary.Orange300, Primary.Orange200, Primary.Orange100, Accent.Orange400, TextShade.BLACK);
         }
 
@@ -183,6 +211,19 @@ namespace Xml_Form
                 foreach (XmlElement xnode in xRoot)
                 {
                     xnode.Attributes["theme"].Value = materialSwitch1.Text;
+
+                    if (materialRadioButton1.Checked)
+                    {
+                        xnode.Attributes["colorscheme"].Value = materialRadioButton1.Text;
+                    }
+                    else if (materialRadioButton2.Checked)
+                    {
+                        xnode.Attributes["colorscheme"].Value = materialRadioButton2.Text;
+                    }
+                    else if (materialRadioButton3.Checked)
+                    {
+                        xnode.Attributes["colorscheme"].Value = materialRadioButton3.Text;
+                    }
                 }
             }
 
@@ -190,6 +231,6 @@ namespace Xml_Form
         }
     }
 
-    
+
 }
 

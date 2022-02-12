@@ -386,10 +386,10 @@
             this.materialRadioButton3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRadioButton3.Name = "materialRadioButton3";
             this.materialRadioButton3.Ripple = true;
-            this.materialRadioButton3.Size = new System.Drawing.Size(76, 37);
+            this.materialRadioButton3.Size = new System.Drawing.Size(85, 37);
             this.materialRadioButton3.TabIndex = 14;
             this.materialRadioButton3.TabStop = true;
-            this.materialRadioButton3.Text = "Green";
+            this.materialRadioButton3.Text = "GREEN";
             this.materialRadioButton3.UseVisualStyleBackColor = true;
             this.materialRadioButton3.CheckedChanged += new System.EventHandler(this.materialRadioButton3_CheckedChanged);
             // 
@@ -403,10 +403,10 @@
             this.materialRadioButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRadioButton2.Name = "materialRadioButton2";
             this.materialRadioButton2.Ripple = true;
-            this.materialRadioButton2.Size = new System.Drawing.Size(86, 37);
+            this.materialRadioButton2.Size = new System.Drawing.Size(97, 37);
             this.materialRadioButton2.TabIndex = 13;
             this.materialRadioButton2.TabStop = true;
-            this.materialRadioButton2.Text = "Orange";
+            this.materialRadioButton2.Text = "ORANGE";
             this.materialRadioButton2.UseVisualStyleBackColor = true;
             this.materialRadioButton2.CheckedChanged += new System.EventHandler(this.materialRadioButton2_CheckedChanged);
             // 
@@ -420,10 +420,10 @@
             this.materialRadioButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRadioButton1.Name = "materialRadioButton1";
             this.materialRadioButton1.Ripple = true;
-            this.materialRadioButton1.Size = new System.Drawing.Size(66, 37);
+            this.materialRadioButton1.Size = new System.Drawing.Size(73, 37);
             this.materialRadioButton1.TabIndex = 12;
             this.materialRadioButton1.TabStop = true;
-            this.materialRadioButton1.Text = "Blue";
+            this.materialRadioButton1.Text = "BLUE";
             this.materialRadioButton1.UseVisualStyleBackColor = true;
             this.materialRadioButton1.CheckedChanged += new System.EventHandler(this.materialRadioButton1_CheckedChanged);
             // 
