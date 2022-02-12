@@ -10,11 +10,11 @@ namespace Xml_Form
 {
     public partial class Form1 : MaterialForm
     {
-        private BindingList<User> users = new();
-        private XmlDocument xDoc = new();
-        private XmlDocument settingsDoc = new();
-        MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
-        Settings settings = new Settings();
+        private readonly BindingList<User> users = new();
+        private readonly XmlDocument xDoc = new();
+        private readonly XmlDocument settingsDoc = new();
+        readonly MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+        readonly Settings settings = new();
         public Form1()
         {
             InitializeComponent();
@@ -52,19 +52,19 @@ namespace Xml_Form
             {
                 case "ORANGE":
                     {
-                        Tmanager.ColorScheme = new ColorScheme(Primary.Orange300, Primary.Orange200, Primary.Orange100, Accent.Orange400, TextShade.BLACK);
+                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Orange300, Primary.Orange200, Primary.Orange100, Accent.Orange400, TextShade.BLACK);
                         materialRadioButton2.Checked = true;
                     }
                     break;
                 case "BLUE":
                     {
-                        Tmanager.ColorScheme = new ColorScheme(Primary.Blue100, Primary.Blue200, Primary.Blue300, Accent.Blue400, TextShade.BLACK);
+                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue100, Primary.Blue200, Primary.Blue300, Accent.Blue400, TextShade.BLACK);
                         materialRadioButton1.Checked = true;
                     }
                     break;
                 case "GREEN":
                     {
-                        Tmanager.ColorScheme = new ColorScheme(Primary.Green100, Primary.Green200, Primary.Green300, Accent.Green400, TextShade.BLACK);
+                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Green100, Primary.Green200, Primary.Green300, Accent.Green400, TextShade.BLACK);
                         materialRadioButton3.Checked = true;
                     }
                     break;
@@ -145,36 +145,35 @@ namespace Xml_Form
             Application.Restart();
             Environment.Exit(0);
         }
-        MaterialSkinManager Tmanager = MaterialSkinManager.Instance;
-        private void materialSwitch1_CheckedChanged_1(object sender, EventArgs e)
+        private void MaterialSwitch1_CheckedChanged_1(object sender, EventArgs e)
         {
             if (!materialSwitch1.Checked)
             {
-                Tmanager.Theme = MaterialSkinManager.Themes.LIGHT;
+                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
                 materialSwitch1.Text = "LIGHT";
             }
             else
             {
-                Tmanager.Theme = MaterialSkinManager.Themes.DARK;
+                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
                 materialSwitch1.Text = "DARK";
             }
         }
-        private void materialRadioButton1_CheckedChanged(object sender, EventArgs e)
+        private void MaterialRadioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (materialRadioButton1.Checked)
-                Tmanager.ColorScheme = new ColorScheme(Primary.Blue100, Primary.Blue200, Primary.Blue300, Accent.Blue400, TextShade.BLACK);
+                materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue100, Primary.Blue200, Primary.Blue300, Accent.Blue400, TextShade.BLACK);
         }
-        private void materialRadioButton2_CheckedChanged(object sender, EventArgs e)
+        private void MaterialRadioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (materialRadioButton2.Checked)
-                Tmanager.ColorScheme = new ColorScheme(Primary.Orange300, Primary.Orange200, Primary.Orange100, Accent.Orange400, TextShade.BLACK);
+                materialSkinManager.ColorScheme = new ColorScheme(Primary.Orange300, Primary.Orange200, Primary.Orange100, Accent.Orange400, TextShade.BLACK);
         }
-        private void materialRadioButton3_CheckedChanged(object sender, EventArgs e)
+        private void MaterialRadioButton3_CheckedChanged(object sender, EventArgs e)
         {
             if (materialRadioButton3.Checked)
-                Tmanager.ColorScheme = new ColorScheme(Primary.Green100, Primary.Green200, Primary.Green300, Accent.Green400, TextShade.BLACK);
+                materialSkinManager.ColorScheme = new ColorScheme(Primary.Green100, Primary.Green200, Primary.Green300, Accent.Green400, TextShade.BLACK);
         }
-        private void materialButton1_Click(object sender, EventArgs e)
+        private void MaterialButton1_Click(object sender, EventArgs e)
         {
             XmlElement? xRoot = settingsDoc.DocumentElement;
             if (xRoot != null)

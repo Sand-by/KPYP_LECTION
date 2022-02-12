@@ -360,7 +360,7 @@
             this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.materialButton1.UseAccentColor = false;
             this.materialButton1.UseVisualStyleBackColor = true;
-            this.materialButton1.Click += new System.EventHandler(this.materialButton1_Click);
+            this.materialButton1.Click += new System.EventHandler(this.MaterialButton1_Click);
             // 
             // groupBox1
             // 
@@ -391,7 +391,7 @@
             this.materialRadioButton3.TabStop = true;
             this.materialRadioButton3.Text = "GREEN";
             this.materialRadioButton3.UseVisualStyleBackColor = true;
-            this.materialRadioButton3.CheckedChanged += new System.EventHandler(this.materialRadioButton3_CheckedChanged);
+            this.materialRadioButton3.CheckedChanged += new System.EventHandler(this.MaterialRadioButton3_CheckedChanged);
             // 
             // materialRadioButton2
             // 
@@ -408,7 +408,7 @@
             this.materialRadioButton2.TabStop = true;
             this.materialRadioButton2.Text = "ORANGE";
             this.materialRadioButton2.UseVisualStyleBackColor = true;
-            this.materialRadioButton2.CheckedChanged += new System.EventHandler(this.materialRadioButton2_CheckedChanged);
+            this.materialRadioButton2.CheckedChanged += new System.EventHandler(this.MaterialRadioButton2_CheckedChanged);
             // 
             // materialRadioButton1
             // 
@@ -425,7 +425,7 @@
             this.materialRadioButton1.TabStop = true;
             this.materialRadioButton1.Text = "BLUE";
             this.materialRadioButton1.UseVisualStyleBackColor = true;
-            this.materialRadioButton1.CheckedChanged += new System.EventHandler(this.materialRadioButton1_CheckedChanged);
+            this.materialRadioButton1.CheckedChanged += new System.EventHandler(this.MaterialRadioButton1_CheckedChanged);
             // 
             // materialSwitch1
             // 
@@ -441,7 +441,7 @@
             this.materialSwitch1.TabIndex = 11;
             this.materialSwitch1.Text = "LIGHT";
             this.materialSwitch1.UseVisualStyleBackColor = true;
-            this.materialSwitch1.CheckedChanged += new System.EventHandler(this.materialSwitch1_CheckedChanged_1);
+            this.materialSwitch1.CheckedChanged += new System.EventHandler(this.MaterialSwitch1_CheckedChanged_1);
             // 
             // pic
             // 
