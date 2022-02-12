@@ -69,12 +69,13 @@
             this.user_listbox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.user_listbox1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.user_listbox1.FormattingEnabled = true;
-            this.user_listbox1.ItemHeight = 37;
+            this.user_listbox1.ItemHeight = 30;
             this.user_listbox1.Items.AddRange(new object[] {
             "cvbc"});
-            this.user_listbox1.Location = new System.Drawing.Point(3, 3);
+            this.user_listbox1.Location = new System.Drawing.Point(3, 2);
+            this.user_listbox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.user_listbox1.Name = "user_listbox1";
-            this.user_listbox1.Size = new System.Drawing.Size(723, 381);
+            this.user_listbox1.Size = new System.Drawing.Size(642, 288);
             this.user_listbox1.TabIndex = 0;
             // 
             // add_button
@@ -86,12 +87,12 @@
             this.add_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.add_button.HighEmphasis = true;
             this.add_button.Icon = null;
-            this.add_button.Location = new System.Drawing.Point(4, 310);
-            this.add_button.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.add_button.Location = new System.Drawing.Point(4, 232);
+            this.add_button.Margin = new System.Windows.Forms.Padding(4);
             this.add_button.MouseState = MaterialSkin.MouseState.HOVER;
             this.add_button.Name = "add_button";
             this.add_button.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.add_button.Size = new System.Drawing.Size(299, 65);
+            this.add_button.Size = new System.Drawing.Size(264, 52);
             this.add_button.TabIndex = 7;
             this.add_button.Text = "Добавить";
             this.add_button.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -108,12 +109,12 @@
             this.delete_user.Dock = System.Windows.Forms.DockStyle.Fill;
             this.delete_user.HighEmphasis = true;
             this.delete_user.Icon = null;
-            this.delete_user.Location = new System.Drawing.Point(4, 234);
-            this.delete_user.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.delete_user.Location = new System.Drawing.Point(4, 175);
+            this.delete_user.Margin = new System.Windows.Forms.Padding(4);
             this.delete_user.MouseState = MaterialSkin.MouseState.HOVER;
             this.delete_user.Name = "delete_user";
             this.delete_user.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.delete_user.Size = new System.Drawing.Size(299, 64);
+            this.delete_user.Size = new System.Drawing.Size(264, 49);
             this.delete_user.TabIndex = 8;
             this.delete_user.Text = "Удалить";
             this.delete_user.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -133,13 +134,13 @@
             this.restart_button.Font = new System.Drawing.Font("Showcard Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.restart_button.HighEmphasis = true;
             this.restart_button.Icon = null;
-            this.restart_button.Location = new System.Drawing.Point(4, 425);
-            this.restart_button.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.restart_button.MaximumSize = new System.Drawing.Size(0, 53);
+            this.restart_button.Location = new System.Drawing.Point(4, 322);
+            this.restart_button.Margin = new System.Windows.Forms.Padding(4);
+            this.restart_button.MaximumSize = new System.Drawing.Size(0, 40);
             this.restart_button.MouseState = MaterialSkin.MouseState.HOVER;
             this.restart_button.Name = "restart_button";
             this.restart_button.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.restart_button.Size = new System.Drawing.Size(1034, 53);
+            this.restart_button.Size = new System.Drawing.Size(918, 40);
             this.restart_button.TabIndex = 9;
             this.restart_button.Text = "Рестарт";
             this.restart_button.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -156,21 +157,23 @@
             this.tableLayoutPanel1.Controls.Add(this.restart_button, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1042, 484);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(926, 366);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(732, 3);
+            this.panel1.Location = new System.Drawing.Point(651, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(307, 381);
+            this.panel1.Size = new System.Drawing.Size(272, 288);
             this.panel1.TabIndex = 9;
             // 
             // tableLayoutPanel2
@@ -184,6 +187,7 @@
             this.tableLayoutPanel2.Controls.Add(this.age_field, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 5;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -191,7 +195,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(307, 381);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(272, 288);
             this.tableLayoutPanel2.TabIndex = 12;
             // 
             // name_field
@@ -205,12 +209,13 @@
             this.name_field.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.name_field.Hint = "Имя";
             this.name_field.LeadingIcon = null;
-            this.name_field.Location = new System.Drawing.Point(3, 3);
+            this.name_field.Location = new System.Drawing.Point(3, 2);
+            this.name_field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.name_field.MaxLength = 50;
             this.name_field.MouseState = MaterialSkin.MouseState.OUT;
             this.name_field.Multiline = false;
             this.name_field.Name = "name_field";
-            this.name_field.Size = new System.Drawing.Size(301, 50);
+            this.name_field.Size = new System.Drawing.Size(266, 50);
             this.name_field.TabIndex = 9;
             this.name_field.Text = "";
             this.name_field.TrailingIcon = null;
@@ -224,12 +229,13 @@
             this.company_field.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.company_field.Hint = "Компания";
             this.company_field.LeadingIcon = null;
-            this.company_field.Location = new System.Drawing.Point(3, 79);
+            this.company_field.Location = new System.Drawing.Point(3, 59);
+            this.company_field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.company_field.MaxLength = 50;
             this.company_field.MouseState = MaterialSkin.MouseState.OUT;
             this.company_field.Multiline = false;
             this.company_field.Name = "company_field";
-            this.company_field.Size = new System.Drawing.Size(301, 50);
+            this.company_field.Size = new System.Drawing.Size(266, 50);
             this.company_field.TabIndex = 10;
             this.company_field.Text = "";
             this.company_field.TrailingIcon = null;
@@ -243,12 +249,13 @@
             this.age_field.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.age_field.Hint = "Возраст";
             this.age_field.LeadingIcon = null;
-            this.age_field.Location = new System.Drawing.Point(3, 155);
+            this.age_field.Location = new System.Drawing.Point(3, 116);
+            this.age_field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.age_field.MaxLength = 50;
             this.age_field.MouseState = MaterialSkin.MouseState.OUT;
             this.age_field.Multiline = false;
             this.age_field.Name = "age_field";
-            this.age_field.Size = new System.Drawing.Size(301, 50);
+            this.age_field.Size = new System.Drawing.Size(266, 50);
             this.age_field.TabIndex = 11;
             this.age_field.Text = "";
             this.age_field.TrailingIcon = null;
@@ -261,12 +268,13 @@
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialTabControl1.ImageList = this.pic;
-            this.materialTabControl1.Location = new System.Drawing.Point(3, 64);
+            this.materialTabControl1.Location = new System.Drawing.Point(3, 48);
+            this.materialTabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl1.Multiline = true;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(1056, 533);
+            this.materialTabControl1.Size = new System.Drawing.Size(940, 413);
             this.materialTabControl1.TabIndex = 14;
             // 
             // tabPage1
@@ -275,9 +283,10 @@
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
             this.tabPage1.ImageKey = "sdf.png";
             this.tabPage1.Location = new System.Drawing.Point(4, 39);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1048, 490);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Size = new System.Drawing.Size(932, 370);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Главная";
             this.tabPage1.ToolTipText = "Главная";
@@ -288,9 +297,10 @@
             this.tabPage2.Controls.Add(this.tableLayoutPanel3);
             this.tabPage2.ImageKey = "sety.png";
             this.tabPage2.Location = new System.Drawing.Point(4, 39);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1048, 490);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Size = new System.Drawing.Size(932, 370);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Настройки";
             // 
@@ -302,11 +312,12 @@
             this.tableLayoutPanel3.Controls.Add(this.materialCard2, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.materialCard1, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1042, 484);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(926, 366);
             this.tableLayoutPanel3.TabIndex = 13;
             // 
             // materialCard2
@@ -316,12 +327,12 @@
             this.materialCard2.Depth = 0;
             this.materialCard2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard2.Location = new System.Drawing.Point(535, 14);
-            this.materialCard2.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard2.Location = new System.Drawing.Point(475, 10);
+            this.materialCard2.Margin = new System.Windows.Forms.Padding(12, 10, 12, 10);
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
-            this.materialCard2.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard2.Size = new System.Drawing.Size(493, 456);
+            this.materialCard2.Padding = new System.Windows.Forms.Padding(12, 10, 12, 10);
+            this.materialCard2.Size = new System.Drawing.Size(439, 346);
             this.materialCard2.TabIndex = 13;
             // 
             // materialCard1
@@ -333,12 +344,12 @@
             this.materialCard1.Depth = 0;
             this.materialCard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(14, 14);
-            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard1.Location = new System.Drawing.Point(12, 10);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(12, 10, 12, 10);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
-            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(493, 456);
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(12, 10, 12, 10);
+            this.materialCard1.Size = new System.Drawing.Size(439, 346);
             this.materialCard1.TabIndex = 12;
             // 
             // materialButton1
@@ -349,12 +360,12 @@
             this.materialButton1.Depth = 0;
             this.materialButton1.HighEmphasis = true;
             this.materialButton1.Icon = null;
-            this.materialButton1.Location = new System.Drawing.Point(17, 389);
-            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton1.Location = new System.Drawing.Point(15, 292);
+            this.materialButton1.Margin = new System.Windows.Forms.Padding(4);
             this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton1.Name = "materialButton1";
             this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton1.Size = new System.Drawing.Size(198, 45);
+            this.materialButton1.Size = new System.Drawing.Size(173, 34);
             this.materialButton1.TabIndex = 15;
             this.materialButton1.Text = "Сохранить настройки";
             this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -369,9 +380,11 @@
             this.groupBox1.Controls.Add(this.materialRadioButton1);
             this.groupBox1.Controls.Add(this.materialSwitch1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.groupBox1.Location = new System.Drawing.Point(17, 17);
+            this.groupBox1.Location = new System.Drawing.Point(15, 13);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(362, 263);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(317, 197);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Цветовая схема";
@@ -380,7 +393,7 @@
             // 
             this.materialRadioButton3.AutoSize = true;
             this.materialRadioButton3.Depth = 0;
-            this.materialRadioButton3.Location = new System.Drawing.Point(13, 142);
+            this.materialRadioButton3.Location = new System.Drawing.Point(11, 106);
             this.materialRadioButton3.Margin = new System.Windows.Forms.Padding(0);
             this.materialRadioButton3.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialRadioButton3.MouseState = MaterialSkin.MouseState.HOVER;
@@ -397,7 +410,7 @@
             // 
             this.materialRadioButton2.AutoSize = true;
             this.materialRadioButton2.Depth = 0;
-            this.materialRadioButton2.Location = new System.Drawing.Point(13, 105);
+            this.materialRadioButton2.Location = new System.Drawing.Point(11, 79);
             this.materialRadioButton2.Margin = new System.Windows.Forms.Padding(0);
             this.materialRadioButton2.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialRadioButton2.MouseState = MaterialSkin.MouseState.HOVER;
@@ -414,7 +427,7 @@
             // 
             this.materialRadioButton1.AutoSize = true;
             this.materialRadioButton1.Depth = 0;
-            this.materialRadioButton1.Location = new System.Drawing.Point(13, 68);
+            this.materialRadioButton1.Location = new System.Drawing.Point(11, 51);
             this.materialRadioButton1.Margin = new System.Windows.Forms.Padding(0);
             this.materialRadioButton1.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialRadioButton1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -431,7 +444,7 @@
             // 
             this.materialSwitch1.AutoSize = true;
             this.materialSwitch1.Depth = 0;
-            this.materialSwitch1.Location = new System.Drawing.Point(13, 22);
+            this.materialSwitch1.Location = new System.Drawing.Point(11, 16);
             this.materialSwitch1.Margin = new System.Windows.Forms.Padding(0);
             this.materialSwitch1.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialSwitch1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -454,15 +467,17 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1062, 600);
+            this.ClientSize = new System.Drawing.Size(946, 463);
             this.Controls.Add(this.materialTabControl1);
             this.DrawerBackgroundWithAccent = true;
             this.DrawerShowIconsWhenHidden = true;
             this.DrawerTabControl = this.materialTabControl1;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(700, 450);
             this.Name = "Form1";
+            this.Padding = new System.Windows.Forms.Padding(3, 48, 3, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "XmlViewer";
             this.tableLayoutPanel1.ResumeLayout(false);
