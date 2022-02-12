@@ -15,14 +15,12 @@ namespace Xml_Form
         private XmlDocument settingsDoc = new();
         MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
         Settings settings = new Settings();
-
         public Form1()
         {
             InitializeComponent();
             InitializeVariables();
             LoadXml();
             LoadSettings();
-
             materialSkinManager.AddFormToManage(this);
             //materialSkinManager.ColorScheme = new ColorScheme(Primary.Orange300, Primary.Orange200, Primary.Orange100, Accent.Orange400, TextShade.BLACK);
         }
@@ -40,13 +38,9 @@ namespace Xml_Form
                 foreach (XmlElement xnode in xRoot)
                 {
                     XmlNode? attr = xnode.Attributes.GetNamedItem("theme");
-
                     settings.Theme = attr.Value;
-
                     XmlNode? sch = xnode.Attributes.GetNamedItem("colorscheme");
-
                     settings.ColorScheme = sch.Value;
-
                 }
             }
             if (settings.Theme == "DARK")
@@ -54,7 +48,6 @@ namespace Xml_Form
                 materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
                 materialSwitch1.Checked = true;
             }
-
             switch (settings.ColorScheme)
             {
                 case "ORANGE":
@@ -76,7 +69,6 @@ namespace Xml_Form
                     }
                     break;
             }
-
         }
         private void LoadXml()
         {
@@ -88,14 +80,11 @@ namespace Xml_Form
                 {
                     User user = new();
                     XmlNode? attr = xnode.Attributes.GetNamedItem("name");
-
                     user.Name = attr.Value;
-
                     foreach (XmlNode childnode in xnode.ChildNodes)
                     {
                         if (childnode.Name == "company")
                             user.Company = childnode.InnerText;
-
                         if (childnode.Name == "age")
                             user.Age = int.Parse(childnode.InnerText);
                     }
@@ -106,14 +95,10 @@ namespace Xml_Form
         private void SaveXml(string name, string company, string age)
         {
             XmlElement? xRoot = xDoc.DocumentElement;
-
             XmlElement userElem = xDoc.CreateElement("user");
-
             XmlAttribute nameAttr = xDoc.CreateAttribute("name");
-
             XmlElement companyElem = xDoc.CreateElement("company");
             XmlElement ageElem = xDoc.CreateElement("age");
-
             XmlText nameText = xDoc.CreateTextNode(name);
             XmlText companyText = xDoc.CreateTextNode(company);
             XmlText ageText = xDoc.CreateTextNode(age);
@@ -123,13 +108,11 @@ namespace Xml_Form
             userElem.Attributes.Append(nameAttr);
             userElem.AppendChild(companyElem);
             userElem.AppendChild(ageElem);
-
             xRoot?.AppendChild(userElem);
             xDoc.Save(@"D:\KPYP_LECTION\Xml_Form\XML\Workers.xml");
         }
         private void Add_button_Click(object sender, EventArgs e)
         {
-
             if (name_field.Text == string.Empty || company_field.Text == string.Empty || age_field.Text == string.Empty)
             {
                 MessageBox.Show("Ошибка добавления!", "Состояние", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -139,19 +122,15 @@ namespace Xml_Form
                 SaveXml(name_field.Text, company_field.Text, age_field.Text);
                 User user = new User(name_field.Text, Convert.ToInt32(age_field.Text), company_field.Text);
                 users.Add(user);
-
                 MaterialListBoxItem item = new MaterialListBoxItem(user.FullInfo);
             }
-
         }
         private void Age_field_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) e.Handled = true;
-
         }
         private void Delete_user_Click(object sender, EventArgs e)
         {
-
             XmlElement? xRoot = xDoc.DocumentElement;
             if (user_listbox1.SelectedIndex >= 0)
             {
@@ -160,16 +139,13 @@ namespace Xml_Form
                 xDoc.Save(@"D:\KPYP_LECTION\Xml_Form\XML\Workers.xml");
                 users.RemoveAt(user_listbox1.SelectedIndex);
             }
-
         }
         private void Restart_button_Click(object sender, EventArgs e)
         {
             Application.Restart();
             Environment.Exit(0);
         }
-
         MaterialSkinManager Tmanager = MaterialSkinManager.Instance;
-
         private void materialSwitch1_CheckedChanged_1(object sender, EventArgs e)
         {
             if (!materialSwitch1.Checked)
@@ -183,35 +159,29 @@ namespace Xml_Form
                 materialSwitch1.Text = "DARK";
             }
         }
-
         private void materialRadioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (materialRadioButton1.Checked)
                 Tmanager.ColorScheme = new ColorScheme(Primary.Blue100, Primary.Blue200, Primary.Blue300, Accent.Blue400, TextShade.BLACK);
         }
-
         private void materialRadioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (materialRadioButton2.Checked)
                 Tmanager.ColorScheme = new ColorScheme(Primary.Orange300, Primary.Orange200, Primary.Orange100, Accent.Orange400, TextShade.BLACK);
         }
-
         private void materialRadioButton3_CheckedChanged(object sender, EventArgs e)
         {
             if (materialRadioButton3.Checked)
                 Tmanager.ColorScheme = new ColorScheme(Primary.Green100, Primary.Green200, Primary.Green300, Accent.Green400, TextShade.BLACK);
         }
-
         private void materialButton1_Click(object sender, EventArgs e)
         {
-
             XmlElement? xRoot = settingsDoc.DocumentElement;
             if (xRoot != null)
             {
                 foreach (XmlElement xnode in xRoot)
                 {
                     xnode.Attributes["theme"].Value = materialSwitch1.Text;
-
                     if (materialRadioButton1.Checked)
                     {
                         xnode.Attributes["colorscheme"].Value = materialRadioButton1.Text;
@@ -226,11 +196,7 @@ namespace Xml_Form
                     }
                 }
             }
-
             settingsDoc.Save(@"D:\KPYP_LECTION\Xml_Form\XML\XMLFile1.xml");
         }
     }
-
-
 }
-
