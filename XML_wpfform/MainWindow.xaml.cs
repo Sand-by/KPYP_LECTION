@@ -1,6 +1,9 @@
 ﻿using ModernWpf;
 using ModernWpf.Controls;
+using Sample_NAudio;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.IO;
 using System.Media;
 using System.Windows;
 using System.Xml;
@@ -11,6 +14,7 @@ namespace XML_wpfform
     {
         public ObservableCollection<Person> People { get; set; }
         private readonly XmlDocument xDoc = new XmlDocument();
+        SoundPlayer player = new SoundPlayer(Resource1.Ring02);
 
         public MainWindow()
         {
@@ -20,7 +24,11 @@ namespace XML_wpfform
             LoadSettings();
             lvUsers.ItemsSource = People;
 
+            NAudioEngine soundEngine = NAudioEngine.Instance;
+            NAudioEngine.Instance.OpenFile(@"C:\Users\doros\Downloads\s.mp3");
+            Spectrum.RegisterSoundPlayer(soundEngine);
         }
+
         private void LoadXml()
         {
             xDoc.Load(@"D:\KPYP_LECTION\XML_wpfform\XML\Workers.xml");
@@ -122,21 +130,23 @@ namespace XML_wpfform
                 settingsFrame.Visibility = Visibility.Collapsed;
             }
         }
-
-        SoundPlayer player = new SoundPlayer(Resource1.Ring02);
-
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            player.PlayLooping();
-        }
+            //Пример с аудиоспектром
+            NAudioEngine.Instance.Play();
 
+            //player.PlayLooping();
+        }
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
+            //Пример с аудиоспектром
+            NAudioEngine.Instance.Stop();
+
             player.Stop();
         }
-
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            //Авторазмер столбцов
             double remainingSpace = lvUsers.ActualWidth;
             if (remainingSpace > 0)
             {
@@ -159,7 +169,7 @@ namespace XML_wpfform
                 playMusic.IsChecked = true;
             }
         }
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void SaveSettings_Click_1(object sender, RoutedEventArgs e)
         {
             _ = (bool)toogleTheme.IsOn? Settings1.Default.Theme = true : Settings1.Default.Theme = false; // Сохранить тему
             _ = (bool)playMusic.IsChecked ? Settings1.Default.SoundPlay = true : Settings1.Default.SoundPlay = false;// Сохранить музыку
