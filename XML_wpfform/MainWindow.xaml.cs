@@ -17,6 +17,7 @@ namespace XML_wpfform
             this.People = new ObservableCollection<Person>();
             InitializeComponent();
             LoadXml();
+            LoadSettings();
             lvUsers.ItemsSource = People;
 
         }
@@ -87,7 +88,7 @@ namespace XML_wpfform
         {
             if (lvUsers.SelectedIndex != -1)
             {
-                MessageBoxResult result = (MessageBoxResult)ModernWpf.MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+                MessageBoxResult result = ModernWpf.MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
                 if (result == MessageBoxResult.Yes)
                 {
                     XmlElement xRoot = xDoc.DocumentElement;
@@ -132,6 +133,37 @@ namespace XML_wpfform
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             player.Stop();
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            double remainingSpace = lvUsers.ActualWidth;
+            if (remainingSpace > 0)
+            {
+                Column1.Width = System.Math.Ceiling(remainingSpace / 3);
+                Column2.Width = System.Math.Ceiling(remainingSpace / 3);
+                Column3.Width = System.Math.Ceiling(remainingSpace / 3);
+            }
+        }
+        private void LoadSettings()
+        {
+            if (Settings1.Default.Theme)
+            {
+                ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
+                toogleTheme.IsOn = true;
+            }
+
+            if (Settings1.Default.SoundPlay)
+            {
+                player.PlayLooping();
+                playMusic.IsChecked = true;
+            }
+        }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            _ = (bool)toogleTheme.IsOn? Settings1.Default.Theme = true : Settings1.Default.Theme = false; // Сохранить тему
+            _ = (bool)playMusic.IsChecked ? Settings1.Default.SoundPlay = true : Settings1.Default.SoundPlay = false;// Сохранить музыку
+            Settings1.Default.Save();
         }
     }
 }
