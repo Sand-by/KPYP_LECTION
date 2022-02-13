@@ -87,7 +87,7 @@
             this.add_button.HighEmphasis = true;
             this.add_button.Icon = null;
             this.add_button.Location = new System.Drawing.Point(5, 317);
-            this.add_button.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.add_button.Margin = new System.Windows.Forms.Padding(5);
             this.add_button.MouseState = MaterialSkin.MouseState.HOVER;
             this.add_button.Name = "add_button";
             this.add_button.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -109,7 +109,7 @@
             this.delete_user.HighEmphasis = true;
             this.delete_user.Icon = null;
             this.delete_user.Location = new System.Drawing.Point(5, 239);
-            this.delete_user.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.delete_user.Margin = new System.Windows.Forms.Padding(5);
             this.delete_user.MouseState = MaterialSkin.MouseState.HOVER;
             this.delete_user.Name = "delete_user";
             this.delete_user.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -134,7 +134,7 @@
             this.restart_button.HighEmphasis = true;
             this.restart_button.Icon = null;
             this.restart_button.Location = new System.Drawing.Point(5, 443);
-            this.restart_button.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.restart_button.Margin = new System.Windows.Forms.Padding(5);
             this.restart_button.MaximumSize = new System.Drawing.Size(0, 53);
             this.restart_button.MouseState = MaterialSkin.MouseState.HOVER;
             this.restart_button.Name = "restart_button";
@@ -276,7 +276,7 @@
             this.tabPage1.ImageKey = "sdf.png";
             this.tabPage1.Location = new System.Drawing.Point(4, 39);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1067, 507);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Главная";
@@ -289,8 +289,8 @@
             this.tabPage2.ImageKey = "sety.png";
             this.tabPage2.Location = new System.Drawing.Point(4, 39);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1066, 508);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1067, 507);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Настройки";
             // 
@@ -306,7 +306,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1060, 502);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1061, 501);
             this.tableLayoutPanel3.TabIndex = 13;
             // 
             // materialCard2
@@ -321,7 +321,7 @@
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
             this.materialCard2.Padding = new System.Windows.Forms.Padding(14, 13, 14, 13);
-            this.materialCard2.Size = new System.Drawing.Size(502, 476);
+            this.materialCard2.Size = new System.Drawing.Size(503, 475);
             this.materialCard2.TabIndex = 13;
             // 
             // materialCard1
@@ -338,7 +338,7 @@
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14, 13, 14, 13);
-            this.materialCard1.Size = new System.Drawing.Size(502, 476);
+            this.materialCard1.Size = new System.Drawing.Size(502, 475);
             this.materialCard1.TabIndex = 12;
             // 
             // materialButton1
@@ -350,7 +350,7 @@
             this.materialButton1.HighEmphasis = true;
             this.materialButton1.Icon = null;
             this.materialButton1.Location = new System.Drawing.Point(17, 389);
-            this.materialButton1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.materialButton1.Margin = new System.Windows.Forms.Padding(5);
             this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton1.Name = "materialButton1";
             this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;

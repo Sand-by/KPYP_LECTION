@@ -12,9 +12,9 @@ namespace Xml_Form
     {
         private readonly BindingList<User> users = new();
         private readonly XmlDocument xDoc = new();
-        private readonly XmlDocument settingsDoc = new();
+       // private readonly XmlDocument settingsDoc = new();
         readonly MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
-        readonly Settings settings = new();
+        private Settings settings;
         public Form1()
         {
             InitializeComponent();
@@ -22,17 +22,16 @@ namespace Xml_Form
             LoadXml();
             LoadSettings();
             materialSkinManager.AddFormToManage(this);
-            //materialSkinManager.ColorScheme = new ColorScheme(Primary.Orange300, Primary.Orange200, Primary.Orange100, Accent.Orange400, TextShade.BLACK);
         }
         public void InitializeVariables()
         {
             user_listbox1.DisplayMember = "FullInfo";
             user_listbox1.DataSource = users;
+            settings = new(@"D:\KPYP_LECTION\Xml_Form\XML\XMLFile1.xml");
         }
         private void LoadSettings()
         {
-            settingsDoc.Load(@"D:\KPYP_LECTION\Xml_Form\XML\XMLFile1.xml");
-            XmlElement? xRoot = settingsDoc.DocumentElement;
+            XmlElement? xRoot = settings.XmlSettings.DocumentElement;
             if (xRoot != null)
             {
                 foreach (XmlElement xnode in xRoot)
@@ -120,9 +119,8 @@ namespace Xml_Form
             else
             {
                 SaveXml(name_field.Text, company_field.Text, age_field.Text);
-                User user = new User(name_field.Text, Convert.ToInt32(age_field.Text), company_field.Text);
+                User user = new(name_field.Text, Convert.ToInt32(age_field.Text), company_field.Text);
                 users.Add(user);
-                MaterialListBoxItem item = new MaterialListBoxItem(user.FullInfo);
             }
         }
         private void Age_field_KeyPress(object sender, KeyPressEventArgs e)
@@ -175,7 +173,7 @@ namespace Xml_Form
         }
         private void MaterialButton1_Click(object sender, EventArgs e)
         {
-            XmlElement? xRoot = settingsDoc.DocumentElement;
+            XmlElement? xRoot = settings.XmlSettings.DocumentElement;
             if (xRoot != null)
             {
                 foreach (XmlElement xnode in xRoot)
@@ -195,7 +193,7 @@ namespace Xml_Form
                     }
                 }
             }
-            settingsDoc.Save(@"D:\KPYP_LECTION\Xml_Form\XML\XMLFile1.xml");
+            settings.XmlSettings.Save(@"D:\KPYP_LECTION\Xml_Form\XML\XMLFile1.xml");
         }
     }
 }
