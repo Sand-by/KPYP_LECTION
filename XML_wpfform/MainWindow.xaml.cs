@@ -3,9 +3,7 @@ using ModernWpf.Controls;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Xml;
-using ModernWpf.Navigation;
 using XML_wpfform.Classes;
-
 namespace XML_wpfform
 {
     public partial class MainWindow : Window
@@ -89,7 +87,7 @@ namespace XML_wpfform
         {
             if (lvUsers.SelectedIndex != -1)
             {
-                MessageBoxResult result = (MessageBoxResult)ModernWpf.MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo, MessageBoxImage.Question,MessageBoxResult.No);
+                MessageBoxResult result = (MessageBoxResult)ModernWpf.MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
                 if (result == MessageBoxResult.Yes)
                 {
                     XmlElement xRoot = xDoc.DocumentElement;
@@ -105,20 +103,19 @@ namespace XML_wpfform
 
             }
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
             System.Windows.Forms.Application.Restart();
         }
-        private  void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.IsSettingsInvoked)
             {
                 MainFrame.Visibility = Visibility.Collapsed;
                 settingsFrame.Visibility = Visibility.Visible;
             }
-            else if (args.InvokedItem.ToString()=="Главная")
+            else if (args.InvokedItem.ToString() == "Главная")
             {
                 MainFrame.Visibility = Visibility.Visible;
                 settingsFrame.Visibility = Visibility.Collapsed;
