@@ -1,6 +1,7 @@
 ﻿using ModernWpf;
 using ModernWpf.Controls;
 using System.Collections.ObjectModel;
+using System.Media;
 using System.Windows;
 using System.Xml;
 using XML_wpfform.Classes;
@@ -82,7 +83,6 @@ namespace XML_wpfform
             else
                 ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
         }
-
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             if (lvUsers.SelectedIndex != -1)
@@ -120,6 +120,18 @@ namespace XML_wpfform
                 MainFrame.Visibility = Visibility.Visible;
                 settingsFrame.Visibility = Visibility.Collapsed;
             }
+        }
+
+        SoundPlayer player = new SoundPlayer(Resource1.Ring02);
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            player.PlayLooping();
+        }
+
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            player.Stop();
         }
     }
 }

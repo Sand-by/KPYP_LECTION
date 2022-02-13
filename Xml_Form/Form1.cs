@@ -12,7 +12,7 @@ namespace Xml_Form
     {
         private readonly BindingList<User> users = new();
         private readonly XmlDocument xDoc = new();
-       // private readonly XmlDocument settingsDoc = new();
+        // private readonly XmlDocument settingsDoc = new();
         readonly MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
         private Settings settings;
         public Form1()

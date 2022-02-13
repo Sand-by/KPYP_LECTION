@@ -8,7 +8,6 @@
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
         Title="XMLViewer" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-
     <DockPanel Margin="10">
         <ui:NavigationView IsBackButtonVisible="collapsed" ItemInvoked="NavigationView_ItemInvoked" OpenPaneLength="150"  PaneDisplayMode="LeftCompact"  UseLayoutRounding="True" IsPaneOpen="False">
             <ui:NavigationView.MenuItems>
@@ -54,15 +53,18 @@
                               SpinButtonPlacementMode="Compact"
                               Value="1" SmallChange="5" Minimum="0" TabIndex="3"/>
                         <Button x:Name="Delete" Grid.Row="4" Content="Удалить"  HorizontalAlignment="Stretch" Click="Delete_Click" TabIndex="5" />
-                        <Button Grid.Row="5" Content="Рестарт" HorizontalAlignment="Right" Click="Button_Click"></Button>
+                        <Button Grid.Row="5" Content="Рестарт" HorizontalAlignment="Center" Click="Button_Click"></Button>
                     </Grid>
                 </Grid>
-                <DockPanel x:Name="settingsFrame" Background="Gray" Visibility="Collapsed">
+                <DockPanel x:Name="settingsFrame" Background="Gray" Visibility="Visible">
                     <ui:ToggleSwitch Grid.Row="5" x:Name="toogleTheme" 
                                      HorizontalAlignment="Center"
                                      VerticalAlignment="Center"
                                      Header="Тема" OffContent="Светлая" 
                                      OnContent="Темная" Toggled="ToggleSwitch_Toggled"/>
+
+                    <ToggleButton Content="Музыка" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked"  />
+                    <Button Margin="40" Style="{StaticResource AccentButtonStyle}"> Сохранить настройки </Button>
                 </DockPanel>
             </Grid>
         </ui:NavigationView>

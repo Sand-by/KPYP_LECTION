@@ -12,9 +12,9 @@
         }
         public Person(string n, string c, ushort a)
         {
-           Name = n;
-           Company = c;
-           Age = a;
+            Name = n;
+            Company = c;
+            Age = a;
         }
     }
 }
