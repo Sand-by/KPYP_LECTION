@@ -1,14 +1,13 @@
 ﻿using ModernWpf;
+using ModernWpf.Controls;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Xml;
+using ModernWpf.Navigation;
 using XML_wpfform.Classes;
 
 namespace XML_wpfform
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public ObservableCollection<Person> People { get; set; }
@@ -63,8 +62,7 @@ namespace XML_wpfform
             xRoot?.AppendChild(userElem);
             xDoc.Save(@"D:\KPYP_LECTION\XML_wpfform\XML\Workers.xml");
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Add_Click_1(object sender, RoutedEventArgs e)
         {
             if (name_field.Text == string.Empty || company_field.Text == string.Empty || age_field.Text == string.Empty)
             {
@@ -77,9 +75,6 @@ namespace XML_wpfform
                 People.Add(user);
             }
         }
-
-
-
         private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             if (toogleTheme.IsOn)
@@ -90,15 +85,43 @@ namespace XML_wpfform
                 ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Delete_Click(object sender, RoutedEventArgs e)
         {
             if (lvUsers.SelectedIndex != -1)
             {
-                XmlElement xRoot = xDoc.DocumentElement;
-                XmlNode xmlNode = xRoot?.SelectSingleNode($"//user[@name='{People[lvUsers.SelectedIndex].Name}']");
-                xmlNode?.ParentNode?.RemoveChild(xmlNode);
-                xDoc.Save(@"D:\KPYP_LECTION\XML_wpfform\XML\Workers.xml");
-                People.RemoveAt(lvUsers.SelectedIndex);
+                MessageBoxResult result = (MessageBoxResult)ModernWpf.MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo, MessageBoxImage.Question,MessageBoxResult.No);
+                if (result == MessageBoxResult.Yes)
+                {
+                    XmlElement xRoot = xDoc.DocumentElement;
+                    XmlNode xmlNode = xRoot?.SelectSingleNode($"//user[@name='{People[lvUsers.SelectedIndex].Name}']");
+                    xmlNode?.ParentNode?.RemoveChild(xmlNode);
+                    xDoc.Save(@"D:\KPYP_LECTION\XML_wpfform\XML\Workers.xml");
+                    People.RemoveAt(lvUsers.SelectedIndex);
+                }
+                else if (result == MessageBoxResult.No)
+                {
+                    e.Handled = true;
+                }
+
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+            System.Windows.Forms.Application.Restart();
+        }
+        private  void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            if (args.IsSettingsInvoked)
+            {
+                MainFrame.Visibility = Visibility.Collapsed;
+                settingsFrame.Visibility = Visibility.Visible;
+            }
+            else if (args.InvokedItem.ToString()=="Главная")
+            {
+                MainFrame.Visibility = Visibility.Visible;
+                settingsFrame.Visibility = Visibility.Collapsed;
             }
         }
     }

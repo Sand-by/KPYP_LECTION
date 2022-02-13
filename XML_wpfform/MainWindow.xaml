@@ -10,55 +10,61 @@
         Title="XMLViewer" Height="450" Width="800" WindowStartupLocation="CenterScreen">
 
     <DockPanel Margin="10">
-        
-        <!--<ui:NavigationView IsBackButtonVisible="Collapsed" ItemInvoked="NavigationView_ItemInvoked" OpenPaneLength="317" PaneDisplayMode="LeftCompact">
+        <ui:NavigationView IsBackButtonVisible="collapsed" ItemInvoked="NavigationView_ItemInvoked" OpenPaneLength="150"  PaneDisplayMode="LeftCompact"  UseLayoutRounding="True" IsPaneOpen="False">
             <ui:NavigationView.MenuItems>
-                <ui:NavigationViewItem Icon="Play" Content="Menu Item1" Tag="SamplePage1" />
-                <ui:NavigationViewItem Icon="Save" Content="Menu Item2" Tag="SamplePage2" />
-                <ui:NavigationViewItem Icon="Refresh" Content="Menu Item3" Tag="SamplePage3" />
-                <ui:NavigationViewItem Icon="Download" Content="Menu Item4" Tag="SamplePage4"/>
+                <ui:NavigationViewItem ui:SelectsOnInvoked="True" Icon="Home" Content="Главная" x:Name="sample1"/>
             </ui:NavigationView.MenuItems>
-        </ui:NavigationView>-->
-        
-        <Grid Tag="MainGrid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <ListView Grid.Column ="0" Margin="10"  Name="lvUsers" ItemsSource="{Binding People}" BorderBrush="Black" BorderThickness="1"  SelectionMode="Single">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Фио"  DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Компания"  DisplayMemberBinding="{Binding Company}" />
-                        <GridViewColumn Header="Возраст"  DisplayMemberBinding="{Binding Age}" />
-                    </GridView>
-                </ListView.View>
-            </ListView>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBox x:Name="name_field" ui:ControlHelper.Header="Введите имя:" ui:ControlHelper.PlaceholderText="Имя" VerticalAlignment="Top"/>
-                <TextBox x:Name="company_field" Grid.Row="1" ui:ControlHelper.Header="Введите компанию:"   ui:ControlHelper.PlaceholderText="Компания" VerticalAlignment="Top"/>
-                <Button Grid.Row="3" Content="Добавить"  Click="Button_Click_1" HorizontalAlignment="Stretch" Style="{StaticResource AccentButtonStyle}" TabIndex="4"/>
-                <ui:NumberBox x:Name="age_field" Grid.Row ="2"  
+            <Grid Tag="Layout">
+                <Grid x:Name="MainFrame">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="358*"></ColumnDefinition>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="370*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ListView Grid.Column ="0" Margin="10,10,10,10"  Name="lvUsers" ItemsSource="{Binding People}" BorderBrush="Black" BorderThickness="1"  SelectionMode="Single" Grid.ColumnSpan="2">
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Удалить" Click="Delete_Click"/>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Фио"  DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Компания"  DisplayMemberBinding="{Binding Company}" />
+                                <GridViewColumn Header="Возраст"  DisplayMemberBinding="{Binding Age}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid Grid.Column="1" Grid.ColumnSpan="2" Margin="12,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="name_field" ui:ControlHelper.Header="Введите имя:" ui:ControlHelper.PlaceholderText="Имя" VerticalAlignment="Top"/>
+                        <TextBox x:Name="company_field" Grid.Row="1" ui:ControlHelper.Header="Введите компанию:"   ui:ControlHelper.PlaceholderText="Компания" VerticalAlignment="Top"/>
+                        <Button x:Name="Add" Grid.Row="3" Content="Добавить"  Click="Add_Click_1" HorizontalAlignment="Stretch" Style="{StaticResource AccentButtonStyle}" TabIndex="4"/>
+                        <ui:NumberBox x:Name="age_field" Grid.Row ="2"  
                               Maximum="100" 
                               ui:ValidationMode="InvalidInputOverwritten" 
-                              PlaceholderText="Возраст" 
-                              Header="Возраст"
+                              PlaceholderText="Возраст" Header="Возраст"
                               SpinButtonPlacementMode="Compact"
-                              Value="1"
-                              SmallChange="5"
-                              Minimum="0" TabIndex="3"
-                />
-                <Button Grid.Row="4" Content="Удалить"  HorizontalAlignment="Stretch" Click="Button_Click" TabIndex="5" />
-                <ui:ToggleSwitch Grid.Row="5" x:Name="toogleTheme" Margin="55,0,0,0"  Toggled="ToggleSwitch_Toggled"/>
+                              Value="1" SmallChange="5" Minimum="0" TabIndex="3"/>
+                        <Button x:Name="Delete" Grid.Row="4" Content="Удалить"  HorizontalAlignment="Stretch" Click="Delete_Click" TabIndex="5" />
+                        <Button Grid.Row="5" Content="Рестарт" HorizontalAlignment="Right" Click="Button_Click"></Button>
+                    </Grid>
+                </Grid>
+                <DockPanel x:Name="settingsFrame" Background="Gray" Visibility="Collapsed">
+                    <ui:ToggleSwitch Grid.Row="5" x:Name="toogleTheme" 
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Header="Тема" OffContent="Светлая" 
+                                     OnContent="Темная" Toggled="ToggleSwitch_Toggled"/>
+                </DockPanel>
             </Grid>
-        </Grid>
+        </ui:NavigationView>
     </DockPanel>
 </Window>

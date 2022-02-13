@@ -1,11 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <users>
-  <user name="1">
-    <company>1</company>
-    <age>1</age>
+  <user name="Bill Gates">
+    <company>Microsoft</company>
+    <age>66</age>
   </user>
-  <user name="Николай">
-    <company>ВИТГТК</company>
-    <age>24</age>
+  <user name="Jeff Bezos">
+    <company>Amazon</company>
+    <age>58</age>
+  </user>
+  <user name="Steven Jobs">
+    <company>Apple</company>
+    <age>56</age>
+  </user>
+  <user name="Mark Zuckenberg">
+    <company>Meta</company>
+    <age>37</age>
+  </user>
+  <user name="Elon Musk">
+    <company>Tesla</company>
+    <age>50</age>
+  </user>
+  <user name="Steve Ballmer">
+    <company>Microsoft</company>
+    <age>65</age>
+  </user>
+  <user name="Larry Page">
+    <company>Google</company>
+    <age>48</age>
+  </user>
+  <user name="Laurence Powell">
+    <company>Emerson Collective</company>
+    <age>58</age>
   </user>
 </users>
