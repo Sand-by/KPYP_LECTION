@@ -21,7 +21,7 @@ namespace XML_wpfform
             InitializeComponent();
             InitializeVariables();
             LoadXml();
-            //RegisterAudio();
+            RegisterAudio();
             LoadSettings();
         }
         private void InitializeVariables()

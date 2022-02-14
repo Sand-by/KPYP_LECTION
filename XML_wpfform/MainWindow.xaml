@@ -15,7 +15,7 @@
                 <ui:NavigationViewItem ui:SelectsOnInvoked="True" Icon="Home" Content="Главная" x:Name="sample1"/>
             </ui:NavigationView.MenuItems>
             <Grid Tag="Layout">
-                <Grid x:Name="MainFrame" Visibility="Hidden">
+                <Grid x:Name="MainFrame" Visibility="Visible">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="358*"/>
                         <ColumnDefinition Width="13*"/>
@@ -57,13 +57,13 @@
                         <Button Grid.Row="5" Content="Рестарт" HorizontalAlignment="Center" Click="Restart_button_Click"/>
                     </Grid>
                 </Grid>
-                <StackPanel x:Name="settingsFrame" Visibility="Visible">
+                <StackPanel x:Name="settingsFrame" Visibility="Collapsed">
                     <ui:ToggleSwitch Grid.Row="5" x:Name="toogleTheme" Margin="20"
                                      Header="Тема" OffContent="Светлая" 
                                      OnContent="Темная" Toggled="ToggleSwitch_Toggled"/>
                     <ToggleButton x:Name="playMusic" Content="Музыка" Margin="20" Checked="PlayMusic_Checked" Unchecked="PlayMusic_Unchecked"  />
                     <Button Margin="20" Style="{StaticResource AccentButtonStyle}" Click="SaveSettings_Click_1" Content="Сохранить настройки"/>
-                    <WPFSoundVisualizationLib:SpectrumAnalyzer x:Name="Spectrum" Grid.Row="5" Height="150"/>
+                    <WPFSoundVisualizationLib:SpectrumAnalyzer x:Name="Spectrum" Grid.Row="5" Height="150" BarCount="64"/>
                 </StackPanel>
             </Grid>
         </ui:NavigationView>
