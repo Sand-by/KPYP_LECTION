@@ -13,22 +13,25 @@ namespace XML_wpfform
     public partial class MainWindow : Window
     {
         public ObservableCollection<Person> People { get; set; }
-        private readonly XmlDocument xDoc = new XmlDocument();
-        SoundPlayer player = new SoundPlayer(Resource1.Ring02);
+        private XmlDocument xDoc;
+        SoundPlayer player;
 
         public MainWindow()
         {
-            this.People = new ObservableCollection<Person>();
             InitializeComponent();
+            InitializeVariables();
             LoadXml();
+            //RegisterAudio();
             LoadSettings();
-            lvUsers.ItemsSource = People;
-
-            NAudioEngine soundEngine = NAudioEngine.Instance;
-            NAudioEngine.Instance.OpenFile(@"C:\Users\doros\Downloads\s.mp3");
-            Spectrum.RegisterSoundPlayer(soundEngine);
         }
+        private void InitializeVariables()
+        {
+            this.People = new ObservableCollection<Person>();//Если возникнет ошибка ->поместить перед инициализацией компонентов
+            lvUsers.ItemsSource = People;
+            xDoc = new XmlDocument();
+            player = new SoundPlayer(Resource1.Ring02);
 
+        }
         private void LoadXml()
         {
             xDoc.Load(@"D:\KPYP_LECTION\XML_wpfform\XML\Workers.xml");
@@ -112,7 +115,7 @@ namespace XML_wpfform
 
             }
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Restart_button_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
             System.Windows.Forms.Application.Restart();
@@ -129,20 +132,6 @@ namespace XML_wpfform
                 MainFrame.Visibility = Visibility.Visible;
                 settingsFrame.Visibility = Visibility.Collapsed;
             }
-        }
-        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
-        {
-            //Пример с аудиоспектром
-            NAudioEngine.Instance.Play();
-
-            //player.PlayLooping();
-        }
-        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            //Пример с аудиоспектром
-            NAudioEngine.Instance.Stop();
-
-            player.Stop();
         }
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -165,6 +154,7 @@ namespace XML_wpfform
 
             if (Settings1.Default.SoundPlay)
             {
+                //NAudioEngine.Instance.Play();//Раскомментировать для воспроизведения после загрузки приложения
                 player.PlayLooping();
                 playMusic.IsChecked = true;
             }
@@ -174,6 +164,27 @@ namespace XML_wpfform
             _ = (bool)toogleTheme.IsOn? Settings1.Default.Theme = true : Settings1.Default.Theme = false; // Сохранить тему
             _ = (bool)playMusic.IsChecked ? Settings1.Default.SoundPlay = true : Settings1.Default.SoundPlay = false;// Сохранить музыку
             Settings1.Default.Save();
+        }
+        private void RegisterAudio()
+        {
+            NAudioEngine soundEngine = NAudioEngine.Instance;
+            NAudioEngine.Instance.OpenFile(@"C:\Users\doros\Downloads\s.mp3");
+            Spectrum.RegisterSoundPlayer(soundEngine);
+        }
+        private void PlayMusic_Checked(object sender, RoutedEventArgs e)
+        {
+            //Пример с аудио визуалайзером
+            if(NAudioEngine.Instance.CanPlay)
+                NAudioEngine.Instance.Play();
+            //Аудио ресурс (wav)
+            player.PlayLooping();
+        }
+        private void PlayMusic_Unchecked(object sender, RoutedEventArgs e)
+        {
+            //Пример с аудиоспектром
+            NAudioEngine.Instance.Stop();
+
+            player.Stop();
         }
     }
 }
