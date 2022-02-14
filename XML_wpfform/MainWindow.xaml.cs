@@ -168,7 +168,8 @@ namespace XML_wpfform
         private void RegisterAudio()
         {
             NAudioEngine soundEngine = NAudioEngine.Instance;
-            NAudioEngine.Instance.OpenFile(@"C:\Users\doros\Downloads\s.mp3");
+            string respath = @"D:\KPYP_LECTION\XML_wpfform\Resources\Alternate Realities.mp3";
+            NAudioEngine.Instance.OpenFile(respath);
             Spectrum.RegisterSoundPlayer(soundEngine);
         }
         private void PlayMusic_Checked(object sender, RoutedEventArgs e)

@@ -142,5 +142,8 @@
   <ItemGroup>
     <None Include="Resources\Ring02.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alternate Realities.mp3" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

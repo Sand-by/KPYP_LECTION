@@ -61,6 +61,16 @@ namespace XML_wpfform {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Alternate_Realities {
+            get {
+                object obj = ResourceManager.GetObject("Alternate_Realities", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Ring02 {
