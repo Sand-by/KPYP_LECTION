@@ -178,7 +178,7 @@ namespace XML_wpfform
             if(NAudioEngine.Instance.CanPlay)
                 NAudioEngine.Instance.Play();
             //Аудио ресурс (wav)
-            player.PlayLooping();
+            //player.PlayLooping();
         }
         private void PlayMusic_Unchecked(object sender, RoutedEventArgs e)
         {
