@@ -172,6 +172,7 @@ namespace XML_wpfform
             NAudioEngine.Instance.OpenFile(respath);
             Spectrum.RegisterSoundPlayer(soundEngine);
         }
+
         private void PlayMusic_Checked(object sender, RoutedEventArgs e)
         {
             //Пример с аудио визуалайзером
