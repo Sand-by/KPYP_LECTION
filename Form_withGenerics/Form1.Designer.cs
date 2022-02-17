@@ -39,6 +39,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.name_txt = new System.Windows.Forms.TextBox();
+            this.author_txt = new System.Windows.Forms.TextBox();
+            this.cost_txt = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,11 +130,46 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "listBox";
             // 
+            // name_txt
+            // 
+            this.name_txt.Location = new System.Drawing.Point(1052, 57);
+            this.name_txt.Name = "name_txt";
+            this.name_txt.Size = new System.Drawing.Size(157, 22);
+            this.name_txt.TabIndex = 9;
+            // 
+            // author_txt
+            // 
+            this.author_txt.Location = new System.Drawing.Point(1052, 100);
+            this.author_txt.Name = "author_txt";
+            this.author_txt.Size = new System.Drawing.Size(157, 22);
+            this.author_txt.TabIndex = 10;
+            // 
+            // cost_txt
+            // 
+            this.cost_txt.Location = new System.Drawing.Point(1052, 160);
+            this.cost_txt.Name = "cost_txt";
+            this.cost_txt.Size = new System.Drawing.Size(157, 22);
+            this.cost_txt.TabIndex = 11;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1052, 278);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(157, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Добавить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1032, 647);
+            this.ClientSize = new System.Drawing.Size(1377, 647);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cost_txt);
+            this.Controls.Add(this.author_txt);
+            this.Controls.Add(this.name_txt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -158,6 +197,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox name_txt;
+        private System.Windows.Forms.TextBox author_txt;
+        private System.Windows.Forms.TextBox cost_txt;
+        private System.Windows.Forms.Button button1;
     }
 }
 
