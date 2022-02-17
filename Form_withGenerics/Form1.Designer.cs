@@ -48,6 +48,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 52);
@@ -83,6 +84,7 @@
             this.listView2.Size = new System.Drawing.Size(469, 255);
             this.listView2.TabIndex = 4;
             this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView2_MouseClick);
             // 
             // imageList1
             // 
@@ -150,6 +152,7 @@
             this.cost_txt.Name = "cost_txt";
             this.cost_txt.Size = new System.Drawing.Size(157, 22);
             this.cost_txt.TabIndex = 11;
+            this.cost_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cost_txt_KeyPress);
             // 
             // button1
             // 

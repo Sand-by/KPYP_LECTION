@@ -5,6 +5,6 @@ namespace Form_withGenerics.Classes
     {
         public string Name { get; set; }
         public string Author { get; set; }
-        public int Cost { get; set; }
+        public float Cost { get; set; }
     }
 }

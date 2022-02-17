@@ -11,20 +11,23 @@ namespace Form_withGenerics
     public  partial class Form1 : Form
     {
         public List<SomeClass> la = new List<SomeClass>();
-        public ObservableCollection<SomeClass> colr = new ObservableCollection<SomeClass>();
+        public BindingSource bs = new BindingSource();
         public ImageList imgList = new ImageList { ImageSize = new Size(48, 48) };
+
         public Form1()
         {
             InitializeComponent();
             InitializeSource();
             itinImages();
-            dataGridView1.DataSource = la;
+
+            bs.DataSource = la;
+
+            dataGridView1.DataSource = bs;
             dataGridView1.Columns["Name"].HeaderText = "Имя";
             dataGridView1.Columns["Author"].HeaderText = "Автор";
             dataGridView1.Columns["Cost"].HeaderText = "Ценность";
 
-            colr.Add(new SomeClass { Name = "sd", Author = "sdf", Cost = 10 });
-            listBox1.DataSource = colr;
+            listBox1.DataSource = bs;
             listBox1.DisplayMember = "Name";
 
             listView1.Items.Add(la[0].Name + " (" + la[0].Author + ") ");
@@ -53,15 +56,55 @@ namespace Form_withGenerics
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(name_txt.Text!="" && name_txt.Text!="" && name_txt.Text !="")
+            if(name_txt.Text == String.Empty || name_txt.Text == String.Empty || name_txt.Text == String.Empty)
             {
-                var kniga = new SomeClass { Name = name_txt.Text, Author = author_txt.Text, Cost = int.Parse(cost_txt.Text) };
-                la.Add(kniga);
-                colr.Add(kniga);
-                MessageBox.Show("Добавлено!");
-                MessageBox.Show(colr.Count.ToString());
+                MessageBox.Show("Ошибка");
             }
-                
+            else
+            {
+                var kniga = new SomeClass { Name = name_txt.Text, Author = author_txt.Text, Cost = float.Parse(cost_txt.Text) };
+                la.Add(kniga);
+                bs.ResetBindings(false);
+
+
+                listView2.Items.Add(la[la.Count-1].Name);
+                Image img = new Bitmap(Resource1.cover_med);
+                imgList.Images.Add(img);
+                listView2.View = View.LargeIcon;
+                listView2.LargeImageList = imgList;
+                imgList.Images.SetKeyName(0, "cover-med.jpg");
+                listView2.Items[listView2.Items.Count-1].ImageKey = imgList.Images.Keys[0];
+            }
+
+        }
+
+        private void cost_txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && 
+                !char.IsDigit(e.KeyChar)   &&
+                (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        
+
+        private void listView2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (listView2.SelectedItems.Count >= 1)
+            {
+                ListViewItem item = listView2.SelectedItems[0];
+
+                if (item.Bounds.Contains(e.Location))
+                {
+                    MessageBox.Show(item.Text);
+                }
+            }
         }
     }
 }
