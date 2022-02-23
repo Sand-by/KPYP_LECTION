@@ -15,7 +15,7 @@
                 <ui:NavigationViewItem ui:SelectsOnInvoked="True" Icon="Home" Content="Главная" x:Name="sample1"/>
             </ui:NavigationView.MenuItems>
             <Grid Tag="Layout">
-                <Grid x:Name="MainFrame" Visibility="Visible">
+                <Grid x:Name="MainFrame" Visibility="Collapsed">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="358*"/>
                         <ColumnDefinition Width="13*"/>
@@ -57,7 +57,7 @@
                         <Button Grid.Row="5" Content="Рестарт" HorizontalAlignment="Center" Click="Restart_button_Click"/>
                     </Grid>
                 </Grid>
-                <StackPanel x:Name="settingsFrame" Visibility="Collapsed">
+                <StackPanel x:Name="settingsFrame" Visibility="Visible">
                     <ui:ToggleSwitch Grid.Row="5" x:Name="toogleTheme" Margin="20"
                                      Header="Тема" OffContent="Светлая" 
                                      OnContent="Темная" Toggled="ToggleSwitch_Toggled"/>

@@ -32,4 +32,8 @@
     <company>Emerson Collective</company>
     <age>58</age>
   </user>
+  <user name="SomeName">
+    <company>Company</company>
+    <age>100</age>
+  </user>
 </users>

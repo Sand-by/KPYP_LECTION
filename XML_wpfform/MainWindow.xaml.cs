@@ -154,9 +154,9 @@ namespace XML_wpfform
 
             if (Settings1.Default.SoundPlay)
             {
-                //NAudioEngine.Instance.Play();//Раскомментировать для воспроизведения после загрузки приложения
-                player.PlayLooping();
-                playMusic.IsChecked = true;
+                NAudioEngine.Instance.Play();//Раскомментировать для воспроизведения после загрузки приложения
+                /*player.PlayLooping();
+                playMusic.IsChecked = true;*/
             }
         }
         private void SaveSettings_Click_1(object sender, RoutedEventArgs e)
@@ -172,7 +172,6 @@ namespace XML_wpfform
             NAudioEngine.Instance.OpenFile(respath);
             Spectrum.RegisterSoundPlayer(soundEngine);
         }
-
         private void PlayMusic_Checked(object sender, RoutedEventArgs e)
         {
             //Пример с аудио визуалайзером
