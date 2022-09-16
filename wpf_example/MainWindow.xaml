@@ -18,7 +18,8 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Content="Моя кнопка" 
+        <Button x:Name="Samplebutton"
+            Content="Моя кнопка" 
                 VerticalAlignment="Center"
                 Margin="15"
                 FontSize="14" 
